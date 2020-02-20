@@ -7,8 +7,4 @@ describe('App', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('.stock-row').length).toBe(5);
   });
-  it('renders the details section with the empty default values', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('.stock-detail').length).toBe(4);
-  });
 });

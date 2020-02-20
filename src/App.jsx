@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import StockDetails from './StockDetails.jsx';
 import './App.css';
 
 function App() {
   const [stocks, setStocks] = useState(['SNAP', 'MS', 'VZ', 'DNR', 'HPQ']);
+  const [details, setDetails] = useState({symbol: '', name: '', price: '', stock_exchange: ''});
 
   function generateRows() {
     return stocks.map((stock, index) =>
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="stock-details" />
+      <StockDetails details={details}/>
       <div className="stock-table">
         <table>
           <tbody>
