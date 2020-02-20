@@ -1,8 +1,9 @@
-import {useStockAPI} from './useStockAPI.js';
+import {mock} from './callStockAPI.js';
 import axios from 'axios';
 import {renderHook, act} from '@testing-library/react-hooks';
 
 const mockResponse = {
+  data: {
     "symbols_requested": 1,
     "symbols_returned": 1,
     "data": [
@@ -33,19 +34,16 @@ const mockResponse = {
             "eps": "-0.75"
         }
     ]
+  }
 };
 
 jest.mock('axios');
 axios.get.mockResolvedValue(mockResponse);
 
-describe('useStockAPI', () => {
+describe.only('useStockAPI', () => {
   it('should call axios with stock name, parse the payload from axios, then send the stock details to the given state function', async () => {
     const stockName = 'SNAP';
-    let state = {};
-    const useStateMock = ((newState) => {
-      state = newState;
-    });
-    const response = await renderHook(() => useStockAPI(stockName, useStateMock, axios));
-    expect(state).toEqual({symbol: 'SNAP', name: 'Snap Inc.', price: '16.62', stock_exchange: 'NYSE'});
+    const response = await mock(stockName, axios);
+    expect(response).toEqual({symbol: 'SNAP', name: 'Snap Inc.', price: '16.62', stock_exchange: 'NYSE'});
   });
 });

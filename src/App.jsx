@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import StockDetails from './StockDetails.jsx';
+import StockTableRow from './StockTableRow.jsx';
 import {callStockAPI} from './hooks/callStockAPI.js';
 import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
   function generateRows() {
     return stocks.map((stock, index) =>
       <tr key={index} className='stock-row'>
-        <td onClick={() => {fetchFromApi(stock)}}> {stock} </td>
+        <StockTableRow stock={stock} fetchFromApi={fetchFromApi} />
       </tr>
     );
   }

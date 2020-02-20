@@ -13,7 +13,6 @@ export const callStockAPI = (stockName) => {
   return new Promise((resolve, reject) => {
     axios.get(fullStockUrl)
       .then((response) => {
-        console.log(response);
         resolve(parseResponse(response.data.data[0])); // will always be first entry since always only requesting one stock
       })
       .catch((error) => {
@@ -36,3 +35,5 @@ function parseResponse(response) {
     stock_exchange: response.stock_exchange_short
   };
 }
+
+export const mock = (stockName, axios) => callStockAPI(stockName);

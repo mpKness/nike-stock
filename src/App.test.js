@@ -16,10 +16,4 @@ describe('App', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('.stock-row').length).toBe(5);
   });
-  it('should update details using the useStockAPI hook when a stock is clicked on', () => {
-    const wrapper = shallow(<App />);
-    wrapper.find('.stock-row').at(0).simulate('click');
-    const StockDetails = wrapper.find('StockDetails');
-    expect(StockDetails.props().details).toEqual(mockDetails);
-  });
 });
