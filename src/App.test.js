@@ -2,8 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders a table row for each stock in default state stock array', () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper.find('.stock-row')).toBe(5);
 });
