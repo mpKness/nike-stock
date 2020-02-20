@@ -5,9 +5,12 @@ import React from 'react';
  * @param {function} fetchFromApi used to call an external api to get stock details
  * @param {string} stock      the name of the stock
  */
-const StockTableRow = ({fetchFromApi, stock}) => {
+const StockTableRow = ({fetchFromApi, removeStock, stock}) => {
   return (
-    <td onClick={() => {fetchFromApi(stock)}}> {stock} </td>
+    <tr className='stock-row'>
+      <td onClick={() => {fetchFromApi(stock)}}> {stock} </td>
+      <td onClick={() => {removeStock(stock)}} className={'remove-stock-' + stock}> X </td>
+    </tr>
   );
 }
 

@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {stockApiUrl, stockApiToken} from '../constants.js';
 
+// {"Message":"Error! The requested stock(s) could not be found."}
+// {"Message":"Error! The requested stock(s) could not be found."}
+
 /**
  * given a stock name (the symbol), will fetch deatiled information on the stock from an external api
  * will then parse off only the information that will be used by the rest of the application and return
@@ -13,11 +16,17 @@ export const callStockAPI = (stockName) => {
   return new Promise((resolve, reject) => {
     axios.get(fullStockUrl)
       .then((response) => {
-        resolve(parseResponse(response.data.data[0])); // will always be first entry since always only requesting one stock
+        let stockDetails = {};
+        if(!response.data.data) {
+          stockDetails.name = 'INVALID STOCK NAME';
+        } else {
+          stockDetails = parseResponse(response.data.data[0]);
+        }
+        resolve(stockDetails); // will always be first entry since always only requesting one stock
       })
       .catch((error) => {
         console.log("ERROR", error);
-        resolve();
+        resolve({name: 'UNKNOWN ERROR: ' + error});
       });
   });
 }

@@ -28,11 +28,15 @@ function App() {
     setStocks(newStocks)
   }
 
+  function removeStock(stockToRemove) {
+    let newStocks = [...stocks];
+    newStocks = newStocks.filter((value) => value !== stockToRemove);
+    setStocks(newStocks);
+  }
+
   function generateRows() {
     return stocks.map((stock, index) =>
-      <tr key={index} className='stock-row'>
-        <StockTableRow stock={stock} fetchFromApi={fetchFromApi} />
-      </tr>
+      <StockTableRow stock={stock} fetchFromApi={fetchFromApi} removeStock={removeStock} key={index}/>
     );
   }
 
