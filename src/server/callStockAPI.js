@@ -38,9 +38,9 @@ export const callStockAPI = (stockName) => {
  */
 function parseResponse(response) {
   return {
+    symbol: response.symbol,
     name: response.name,
     price: response.price,
-    symbol: response.symbol,
     stock_exchange: response.stock_exchange_short
   };
 }
