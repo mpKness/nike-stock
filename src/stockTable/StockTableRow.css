@@ -1,0 +1,11 @@
+.stock-row {
+  cursor: pointer;
+}
+
+.stock-row-data:hover {
+  background-color: lightgray;
+}
+
+.remove-stock:hover{
+  background-color: red;
+}

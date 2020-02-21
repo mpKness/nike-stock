@@ -1,4 +1,5 @@
 import React from 'react';
+import './StockTableRow.css';
 
 /**
  * lists a stock and provides a click handler that call the given fetch from api function
@@ -8,8 +9,8 @@ import React from 'react';
 const StockTableRow = ({fetchFromApi, removeStock, stock}) => {
   return (
     <tr className='stock-row'>
-      <td onClick={() => {fetchFromApi(stock)}}> {stock} </td>
-      <td onClick={() => {removeStock(stock)}} className={'remove-stock-' + stock}> X </td>
+      <td onClick={() => {fetchFromApi(stock)}} className='stock-row-data'> {stock} </td>
+      <td onClick={() => {removeStock(stock)}} className={'remove-stock'} id={'remove-stock-' + stock}> X </td>
     </tr>
   );
 }

@@ -12,7 +12,7 @@ describe('StockTableRow', () => {
   it('should call remove function when x is clicked', () => {
     const mockFunction = jest.fn();
     const wrapper = shallow(<StockTableRow fetchFromApi={mockFunction} removeStock={mockFunction} stock='test' />);
-    wrapper.find('.remove-stock-test').at(0).simulate('click');
+    wrapper.find('#remove-stock-test').at(0).simulate('click');
     expect(mockFunction.mock.calls.length).toBe(1);
   });
 });

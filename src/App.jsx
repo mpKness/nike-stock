@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import StockDetails from './StockDetails.jsx';
-import StockTableRow from './StockTableRow.jsx';
-import AddStockForm from './AddStockForm.jsx';
-import {callStockAPI} from './hooks/callStockAPI.js';
+import StockDetails from './stockTable/StockDetails.jsx';
+import StockTableRow from './stockTable/StockTableRow.jsx';
+import AddStockForm from './stockTable/AddStockForm.jsx';
+import {callStockAPI} from './server/callStockAPI.js';
 import './App.css';
 
 function App() {
@@ -43,13 +43,16 @@ function App() {
   return (
     <div className="App">
       <StockDetails details={details}/>
-      <div className="stock-table">
-        <table>
+        <table className="stock-table">
+          <thead>
+            <tr>
+              <td> Stock Table </td>
+            </tr>
+          </thead>
           <tbody>
             {generateRows()}
           </tbody>
         </table>
-      </div>
       <AddStockForm addStock={addStock} stockInput={stockInput} changeInput={handleStockInputChange}/>
     </div>
   );
