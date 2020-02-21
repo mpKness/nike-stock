@@ -15,6 +15,7 @@ function App() {
   }
 
   function fetchFromApi(stock) {
+    setDetails({'': 'Loading...'});
     callStockAPI(stock)
       .then(response => {
         setDetails(response)
